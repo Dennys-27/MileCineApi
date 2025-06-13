@@ -1,0 +1,47 @@
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+  <div class="card shadow-lg p-4 animated-border" style="max-width: 400px; width: 100%;">
+    <h3 class="text-center mb-4">Iniciar Sesión</h3>
+    
+    <form [formGroup]="form" (ngSubmit)="login()"> 
+      <div class="mb-3">
+        <label for="nombreUsuario" class="form-label">Usuario</label>
+        <input
+          type="text"
+          id="nombreUsuario"
+          formControlName="NombreUsuario"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': form.get('NombreUsuario')?.invalid && form.get('NombreUsuario')?.touched }"
+        />
+        <div *ngIf="form.get('NombreUsuario')?.invalid && form.get('NombreUsuario')?.touched" class="invalid-feedback">
+          El nombre de usuario es requerido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="Password"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': form.get('Password')?.invalid && form.get('Password')?.touched }"
+        />
+        <div *ngIf="form.get('Password')?.invalid && form.get('Password')?.touched" class="invalid-feedback">
+          La contraseña es requerida.
+        </div>
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+          Ingresar
+        </button>
+      </div>
+      <!-- Enlace al registro -->
+      <div class="mb-3">
+        <div class="text-center">
+        <a routerLink="/registro">¿No tienes cuenta? Regístrate aquí</a>
+      </div>
+      </div>
+    </form>
+  </div>
+</div>

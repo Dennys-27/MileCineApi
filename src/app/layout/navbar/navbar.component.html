@@ -1,0 +1,14 @@
+<nav class="navbar navbar-dark bg-dark px-3">
+  <button class="btn btn-outline-light me-3" (click)="onToggleSidebar()">
+    <i class="fas fa-list"></i> <!-- icono tipo "hamburguesa" -->
+  </button>
+
+  <a class="navbar-brand" href="#">Mi Aplicación</a>
+
+  <div class="d-flex align-items-center ms-auto">
+    <span class="navbar-text text-white me-3">Usuario actual</span>
+    <button class="btn btn-outline-light btn-sm" (click)="logout()">
+      Cerrar sesión
+    </button>
+  </div>
+</nav>

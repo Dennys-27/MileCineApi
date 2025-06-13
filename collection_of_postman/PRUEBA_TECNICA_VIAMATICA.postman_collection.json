@@ -1,0 +1,603 @@
+{
+	"info": {
+		"_postman_id": "e20b8cd7-4779-4147-820a-abbe098823a1",
+		"name": "PRUEBA_TECNICA_VIAMATICA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36428629"
+	},
+	"item": [
+		{
+			"name": "Pelicula",
+			"item": [
+				{
+					"name": "GETPeliculas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7189/Pelicula",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Pelicula"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"La era del Hielo\",\r\n  \"duracion\": \"una hora y media\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7189/Pelicula",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Pelicula"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETBYID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7189/Pelicula/11",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Pelicula",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATEPELICULAS",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 2,\r\n  \"nombre\": \"Titanic\",\r\n  \"duracion\": \"1 hora y 30 minutos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7189/Pelicula/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Pelicula",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETEPELICULAS",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7189/Pelicula/11",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Pelicula",
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sala",
+			"item": [
+				{
+					"name": "Disponibilidad",
+					"item": [
+						{
+							"name": "Disponibilidad",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "nombreSala",
+										"value": "A1000",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nombreSala\": \"A1000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7189/Sala/disponibilidad?nombreSala=A1000",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7189",
+									"path": [
+										"Sala",
+										"disponibilidad"
+									],
+									"query": [
+										{
+											"key": "nombreSala",
+											"value": "A1000"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GETSALAS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7189/Sala",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Sala"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATESALA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"D3000\"\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7189/Sala",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Sala"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETBYID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7189/Sala/11",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Sala",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZARSALA",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 2,\r\n  \"nombre\": \"A2000\"\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7189/Sala/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Sala",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETESALAS",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7189/Pelicula/11",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Pelicula",
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreUsuario\": \"milena2000\",\r\n  \"password\": \"Milena2000*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7189/Usuarios/Login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Usuarios",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Nombre",
+									"value": "Marcos Bayas David",
+									"type": "text"
+								},
+								{
+									"key": "NombreUsuario",
+									"value": "david2000",
+									"type": "text"
+								},
+								{
+									"key": "Password",
+									"value": "David2000*",
+									"type": "text"
+								},
+								{
+									"key": "Role",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:7189/Usuarios/registro",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Usuarios",
+								"registro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "DashboardTotalSalas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7189/Dashboard/DashboardTotalSalas",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Dashboard",
+								"DashboardTotalSalas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TotalSalasDisponibles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7189/Dashboard/TotalSalasDisponibles",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Dashboard",
+								"TotalSalasDisponibles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DashboardTotalPeliculas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7189/Dashboard/DashboardTotalPeliculas",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Dashboard",
+								"DashboardTotalPeliculas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservas",
+			"item": [
+				{
+					"name": "getReversa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7189/Reserva",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Reserva"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearreserta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idSala\": 5,\r\n  \"peliculasId\": [\r\n    1,5,8,9\r\n  ],\r\n  \"fecha_publicacion\": \"2025-06-13T01:04:49.013Z\",\r\n  \"fecha_fin\": \"2025-08-13T01:04:49.013Z\",\r\n  \"estado\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7189/Reserva",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Reserva"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObtenerDetallerdelasPeliculas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7189/Reserva/6",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Reserva",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarPorFiltroFechaAsync",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "inicio",
+									"value": "18-05-2025",
+									"type": "text"
+								},
+								{
+									"key": "fin",
+									"value": "12-06-2026",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:7189/Reserva/BuscarPorFiltroFechaAsync?inicio=2024-06-01&fin=2024-06-30",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Reserva",
+								"BuscarPorFiltroFechaAsync"
+							],
+							"query": [
+								{
+									"key": "inicio",
+									"value": "2024-06-01"
+								},
+								{
+									"key": "fin",
+									"value": "2024-06-30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarPorNombrePeliculaAsync",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7189/Reserva/BuscarPorNombrePeliculaAsync?nombrepelicula=TI",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7189",
+							"path": [
+								"Reserva",
+								"BuscarPorNombrePeliculaAsync"
+							],
+							"query": [
+								{
+									"key": "nombrepelicula",
+									"value": "TI"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

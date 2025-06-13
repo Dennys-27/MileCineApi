@@ -1,0 +1,67 @@
+<!-- modal-editar-producto.component.html -->
+<div
+  class="modal fade"
+  id="modalEditarPelicula"
+  tabindex="-1"
+  aria-labelledby="modalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form (ngSubmit)="guardar()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Editar Producto</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label>Nombre</label>
+            <input
+              [(ngModel)]="peliculaEditado.nombre"
+              name="nombre"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label>Descripción</label>
+            <input
+              [(ngModel)]="peliculaEditado.duracion"
+              name="duracion"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="estado">Estado</label>
+            <select
+              id="estado"
+              [(ngModel)]="peliculaEditado.estado"
+              name="estado"
+              class="form-control"
+              required
+            >
+              <option [value]="1">Activo</option>
+              <option [value]="0">Inactivo</option>
+            </select>
+          </div>
+          <!-- Otros campos aquí -->
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Guardar</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

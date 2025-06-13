@@ -1,0 +1,84 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">Gestión de Peliculas</h3>
+    <button class="btn btn-success" (click)="crearPeliculas()">
+      <i class="fas fa-plus"></i> Nuevo Producto
+    </button>
+  </div>
+  <div class="mb-3">
+    <input
+      [(ngModel)]="filtro"
+      class="form-control"
+      placeholder="Buscar Peliculas..."
+    />
+  </div>
+  <div class="table-responsive">
+    <table
+      class="table table-hover table-bordered align-middle"
+      *ngIf="Peliculas.length > 0"
+    >
+      <thead class="table-dark">
+        <tr class="text-center">
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Duración</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let p of Peliculas
+              | filtropeliculas : filtro
+              | paginate
+                : { itemsPerPage: itemsPorPagina, currentPage: paginaActual }
+          "
+        >
+          <td class="text-center">{{ p.id }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.duracion }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="p.estado === 1 ? 'bg-success' : 'bg-danger'"
+            >
+              {{ p.estado === 1 ? "Activo" : "Eliminado" }}
+            </span>
+          </td>
+          <td class="text-center">
+            <button
+              class="btn btn-sm btn-primary me-1"
+              (click)="editarPeliculas(p)"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="eliminarPeliculas(p.id)"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Paginación -->
+    <pagination-controls
+      (pageChange)="paginaActual = $event"
+      [autoHide]="true"
+      [responsive]="true"
+    >
+    </pagination-controls>
+
+    <!-- Modal Bootstrap -->
+    <app-modal-editar-pelicula
+      [peliculaSeleccionado]="peliculaSeleccionado"
+      (onGuardar)="actualizarLista()"
+    ></app-modal-editar-pelicula>
+  </div>
+
+  <div *ngIf="Peliculas.length === 0" class="alert alert-info text-center">
+    No hay Peliculas registrados.
+  </div>
+</div>

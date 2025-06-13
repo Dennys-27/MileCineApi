@@ -1,0 +1,141 @@
+<div class="container mt-5">
+  <div class="card shadow rounded-4">
+    <div class="card-header bg-dark text-white">
+      <h4 class="mb-0"><i class="fas fa-film me-2"></i>Registrar Reserva</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="reservaForm" (ngSubmit)="guardarReserva()">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Sala</label>
+            <select class="form-select" formControlName="idSala">
+              <option *ngFor="let sala of salas" [value]="sala.id">
+                {{ sala.nombre }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Películas</label>
+            <select
+              class="form-select"
+              formControlName="peliculasId"
+              multiple
+              size="4"
+            >
+              <option *ngFor="let pelicula of peliculas" [value]="pelicula.id">
+                {{ pelicula.nombre }}
+              </option>
+            </select>
+            <div class="form-text">
+              Puedes seleccionar varias con Ctrl o Shift.
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Fecha de Publicación</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              formControlName="fecha_publicacion"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Fecha de Fin</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              formControlName="fecha_fin"
+            />
+          </div>
+        </div>
+
+        <div class="mt-4 text-end">
+          <button type="submit" class="btn btn-success px-4">
+            <i class="fas fa-save me-2"></i>Guardar Reserva
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">Gestión de Reservas</h3>
+  </div>
+  <div class="mb-3">
+    <input
+      [(ngModel)]="filtro"
+      class="form-control"
+      placeholder="Buscar Reservas..."
+    />
+  </div>
+  <div class="table-responsive">
+    <table
+      class="table table-hover table-bordered align-middle"
+      *ngIf="reserva.length > 0"
+    >
+      <thead class="table-dark">
+        <tr class="text-center">
+          <th>ID</th>
+          <th>IdSala</th>
+          <th>nombre</th>
+          <th>Fecha Publicacion</th>
+          <th>Fecha Fin</th>
+          <th>Fecha Creacion</th>
+          <th>Estado</th>
+          <th>Ver Peliculas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let p of reserva
+              | filtroReservas : filtro
+              | paginate
+                : { itemsPerPage: itemsPorPagina, currentPage: paginaActual }
+          "
+        >
+          <td class="text-center">{{ p.id }}</td>
+          <td class="text-center">{{ p.idSala }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.fecha_publicacion }}</td>
+          <td>{{ p.fecha_fin }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="p.estado === 1 ? 'bg-success' : 'bg-danger'"
+            >
+              {{ p.estado === 1 ? "Activo" : "Eliminado" }}
+            </span>
+          </td>
+          <td>{{ p.fecha_creacion }}</td>
+          <td>
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="verPeliculas(p.id)"
+            >
+              <span class="badge">{{ p.peliculas_total }}</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Paginación -->
+    <pagination-controls
+      (pageChange)="paginaActual = $event"
+      [autoHide]="true"
+      [responsive]="true"
+    >
+    </pagination-controls>
+
+    <!-- Modal Bootstrap -->
+    <app-modal-ver-pelicula></app-modal-ver-pelicula>
+  </div>
+
+  <div *ngIf="reserva.length === 0" class="alert alert-info text-center">
+    No hay Reservas registrados.
+  </div>
+</div>

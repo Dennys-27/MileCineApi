@@ -1,0 +1,76 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">Gestión de Salas</h3>
+    <button class="btn btn-success" (click)="crearSala()">
+      <i class="fas fa-plus"></i> Nuevo Producto
+    </button>
+  </div>
+  <div class="mb-3">
+    <input
+      [(ngModel)]="filtro"
+      class="form-control"
+      placeholder="Buscar Salas..."
+    />
+  </div>
+  <div class="table-responsive">
+    <table
+      class="table table-hover table-bordered align-middle"
+      *ngIf="salas.length > 0"
+    >
+      <thead class="table-dark">
+        <tr class="text-center">
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let p of salas
+              | filtrosalas : filtro
+              | paginate
+                : { itemsPerPage: itemsPorPagina, currentPage: paginaActual }
+          "
+        >
+          <td class="text-center">{{ p.id }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="p.estado === 1 ? 'bg-success' : 'bg-danger'"
+            >
+              {{ p.estado === 1 ? "Activo" : "Eliminado" }}
+            </span>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-primary me-1" (click)="editarSala(p)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="eliminarSala(p.id)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Paginación -->
+    <pagination-controls
+      (pageChange)="paginaActual = $event"
+      [autoHide]="true"
+      [responsive]="true"
+    >
+    </pagination-controls>
+
+    <!-- Modal Bootstrap -->
+    <app-modal-editar-sala
+      [salaSeleccionado]="salaSeleccionada"
+      (onGuardar)="actualizarLista()"
+    ></app-modal-editar-sala>
+  </div>
+
+  <div *ngIf="salas.length === 0" class="alert alert-info text-center">
+    No hay Salas registrados.
+  </div>
+</div>
